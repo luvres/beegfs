@@ -18,7 +18,7 @@ local:vztmpl/alpine-3.18-default_20230607_amd64.tar.xz \
 -ssh-public-keys ~/hci.pub
 pct start ${VMID}
 
-VMID=19237;pct exec ${VMID} -- sh -c "apk add --no-cache bash bash-completion nano nano-syntax curl openssh docker docker-compose iperf3 nmap htop \
+VMID=19237;pct exec ${VMID} -- sh -c "apk add --no-cache bash bash-completion nano nano-syntax curl openssh docker docker-compose lsblk iperf3 nmap htop \
 && echo 'PermitRootLogin yes' >>/etc/ssh/ssh_config && rc-update add sshd \
 && rc-update add docker && service sshd restart \
 && cat /usr/share/nano/*.nanorc > ~/.nanorc \
@@ -65,7 +65,7 @@ local:vztmpl/alpine-3.18-default_20230607_amd64.tar.xz \
 -ssh-public-keys ~/hci.pub
 pct start ${VMID}
 
-pct exec ${VMID} -- sh -c "apk add --no-cache bash bash-completion nano nano-syntax curl openssh docker docker-compose iperf3 nmap htop \
+pct exec ${VMID} -- sh -c "apk add --no-cache bash bash-completion nano nano-syntax curl openssh docker docker-compose lsblk iperf3 nmap htop \
 && echo 'PermitRootLogin yes' >>/etc/ssh/ssh_config && rc-update add sshd \
 && rc-update add docker && service sshd restart \
 && cat /usr/share/nano/*.nanorc > ~/.nanorc \
