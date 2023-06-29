@@ -57,7 +57,7 @@ services:
 #      - /dev/infiniband/rdma_cm
 #      - /dev/infiniband/uverbs0
 #      - /dev/infiniband/uverbs1
-    command: "sysMgmtdHost=10.8.33.50 storeAllowFirstRunInit=false connDisableAuthentication=true connInterfacesList=eth1 storeStorageDirectory=/data/stor_01_tgt_101,/data/stor_01_tgt_102"
+    command: "sysMgmtdHost=10.8.33.50 storeAllowFirstRunInit=false connDisableAuthentication=true connInterfacesList=eth1 storeStorageDirectory=/data/stor_01_tgt_101"
     restart: unless-stopped
 #    depends_on:
 #      - beegfs-mgmtd
