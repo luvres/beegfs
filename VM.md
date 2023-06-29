@@ -30,7 +30,6 @@ VMID=19237;pct exec ${VMID} -- sh -c "apk add --no-cache bash bash-completion na
 VMID=19237;pct stop ${VMID};pct destroy ${VMID}
 ```
 
-```
 ### Access
 ```
 VMID=19237;pct exec ${VMID} -- bash
