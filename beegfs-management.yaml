@@ -16,8 +16,7 @@ services:
 #      - /dev/infiniband/rdma_cm
 #      - /dev/infiniband/uverbs0
 #      - /dev/infiniband/uverbs1
-    command: "storeAllowFirstRunInit=false connDisableAuthentication=true \
-connInterfacesList=eth1 storeMgmtdDirectory=/mnt/mgmt_tgt_mgmt01"
+    command: "storeAllowFirstRunInit=false connDisableAuthentication=true connInterfacesList=eth1 storeMgmtdDirectory=/mnt/mgmt_tgt_mgmt01"
     restart: unless-stopped
 
   beegfs-meta:

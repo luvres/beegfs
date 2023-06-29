@@ -16,3 +16,14 @@ curl https://raw.githubusercontent.com/luvres/beegfs/main/beegfs-storage.yaml | 
 ```
 connInterfacesList=eth1 and sysMgmtdHost=10.8.33.50
 ```
+
+
+
+
+
+curl https://raw.githubusercontent.com/luvres/beegfs/main/docker-compose.yaml | docker-compose -f - up -d
+
+curl https://raw.githubusercontent.com/luvres/beegfs/main/docker-compose.yaml | docker-compose -f - down
+
+
+
