@@ -45,11 +45,11 @@ services:
     image: beegfs/beegfs-storage:latest
     environment:
       - beegfs_setup_1=beegfs-setup-storage -C -p /data/stor_01_tgt_101 -s 1 -S stor_01_tgt_101 -i 101
-      - beegfs_setup_2=beegfs-setup-storage -C -p /data/stor_01_tgt_102 -s 1 -S stor_01_tgt_101 -i 102
+#      - beegfs_setup_2=beegfs-setup-storage -C -p /data/stor_01_tgt_102 -s 1 -S stor_01_tgt_101 -i 102
 #      - CONN_AUTH_FILE_DATA=shared_secret_string
     volumes:
       - /mnt/stor_01_tgt_101:/data/stor_01_tgt_101
-      - /mnt/stor_01_tgt_102:/data/stor_01_tgt_102
+#      - /mnt/stor_01_tgt_102:/data/stor_01_tgt_102
     network_mode: "host"
 #    cap_add:
 #      - IPC_LOCK
