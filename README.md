@@ -9,7 +9,7 @@ curl https://raw.githubusercontent.com/luvres/beegfs/main/beegfs-management.yaml
 
 ### Storages
 ```
-curl https://raw.githubusercontent.com/luvres/beegfs/main/beegfs-storage.yaml | docker-compose -f - up -d
+curl https://raw.githubusercontent.com/luvres/beegfs/main/beegfs-storage-51.yaml | docker-compose -f - up -d
 ```
 
 ### Pay attention to the variables with the interface(s) that BeeGFS must use for communication and the IP that must be used for the BeeGFS management service.

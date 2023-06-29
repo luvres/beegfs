@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+  beegfs-storage:
+    container_name: beegfs-storage
+    image: beegfs/beegfs-storage:latest
+    environment:
+      - beegfs_setup_1=beegfs-setup-storage -C -p /data/stor_01_tgt_5301 -s 1 -S stor_01_tgt_5301 -i 5301
+#      - beegfs_setup_2=beegfs-setup-storage -C -p /data/stor_01_tgt_5302 -s 1 -S stor_01_tgt_5301 -i 5302
+    volumes:
+      - /mnt/stor_01_tgt_5301:/data/stor_01_tgt_5301
+#      - /mnt/stor_01_tgt_5302:/data/stor_01_tgt_5302
+    network_mode: "host"
+    command: "sysMgmtdHost=10.8.33.50 storeAllowFirstRunInit=false connDisableAuthentication=true connInterfacesList=eth1 storeStorageDirectory=/data/stor_01_tgt_5301"
+    restart: unless-stopped
