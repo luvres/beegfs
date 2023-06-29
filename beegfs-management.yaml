@@ -5,7 +5,7 @@ services:
     container_name: beegfs-mgmtd
     image: beegfs/beegfs-mgmtd:latest
     environment:
-      - beegfs_setup_1="beegfs-setup-mgmtd -p /mnt/mgmt_tgt_mgmt01 -C -S mgmt_tgt_mgmt01"
+      - beegfs_setup_1=beegfs-setup-mgmtd -p /mnt/mgmt_tgt_mgmt01 -C -S mgmt_tgt_mgmt01
     volumes:
       - /tmp/mgmt_tgt_mgmt01:/mnt/mgmt_tgt_mgmt01
     network_mode: "host"
