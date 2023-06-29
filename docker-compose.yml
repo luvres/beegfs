@@ -1,0 +1,64 @@
+version: '3'
+services:
+
+  beegfs-mgmtd:
+    container_name: beegfs-mgmtd
+    image: beegfs/beegfs-mgmtd:latest
+    environment:
+      - beegfs_setup_1="beegfs-setup-mgmtd -p /mnt/mgmt_tgt_mgmt01 -C -S mgmt_tgt_mgmt01"
+#      - CONN_AUTH_FILE_DATA=shared_secret_string
+    volumes:
+      - /tmp/mgmt_tgt_mgmt01:/mnt/mgmt_tgt_mgmt01
+    network_mode: "host"
+#    cap_add:
+#      - IPC_LOCK
+#    devices:
+#      - /dev/infiniband/rdma_cm
+#      - /dev/infiniband/uverbs0
+#      - /dev/infiniband/uverbs1
+    command: "storeAllowFirstRunInit=false connDisableAuthentication=true \
+connInterfacesList=eth1 storeMgmtdDirectory=/mnt/mgmt_tgt_mgmt01"
+    restart: unless-stopped
+
+  beegfs-meta:
+    container_name: beegfs-meta
+    image: beegfs/beegfs-meta:latest
+    environment:
+      - beegfs_setup_1=beegfs-setup-meta -C -p /data/meta_01_tgt_0101 -s 1 -S meta_01
+#      - CONN_AUTH_FILE_DATA=shared_secret_string
+    volumes:
+      - /mnt/meta_01_tgt_0101:/data/meta_01_tgt_0101
+    network_mode: "host"
+#    cap_add:
+#      - IPC_LOCK
+#    devices:
+#      - /dev/infiniband/rdma_cm
+#      - /dev/infiniband/uverbs0
+#      - /dev/infiniband/uverbs1
+    command: "sysMgmtdHost=10.8.33.50 storeAllowFirstRunInit=false connDisableAuthentication=true connInterfacesList=eth1 storeMetaDirectory=/data/meta_01_tgt_0101"
+    restart: unless-stopped
+    depends_on:
+      - beegfs-mgmtd
+
+  beegfs-storage:
+    container_name: beegfs-storage
+    image: beegfs/beegfs-storage:latest
+    environment:
+      - beegfs_setup_1=beegfs-setup-storage -C -p /data/stor_01_tgt_101 -s 1 -S stor_01_tgt_101 -i 101
+      - beegfs_setup_2=beegfs-setup-storage -C -p /data/stor_01_tgt_102 -s 1 -S stor_01_tgt_101 -i 102
+#      - CONN_AUTH_FILE_DATA=shared_secret_string
+    volumes:
+      - /mnt/stor_01_tgt_101:/data/stor_01_tgt_101
+      - /mnt/stor_01_tgt_102:/data/stor_01_tgt_102
+    network_mode: "host"
+#    cap_add:
+#      - IPC_LOCK
+#    devices:
+#      - /dev/infiniband/rdma_cm
+#      - /dev/infiniband/uverbs0
+#      - /dev/infiniband/uverbs1
+    command: "sysMgmtdHost=10.8.33.50 storeAllowFirstRunInit=false connDisableAuthentication=true connInterfacesList=eth1 storeStorageDirectory=/data/stor_01_tgt_101,/data/stor_01_tgt_102"
+    restart: unless-stopped
+    depends_on:
+      - beegfs-mgmtd
+      - beegfs-meta
