@@ -1,6 +1,6 @@
 # Management 
 ```
-VMID=19237;HOSTNAME="beegfs-mgmtd";MEMORY="2048";STORAGE="SSD";DISK="2";
+VMID=19247;HOSTNAME="beegfs-mgmtd";MEMORY="2048";STORAGE="SSD";DISK="2";
 BRIDGE0="vmbr0";IP0="192.168.96.47/27";GW="192.168.96.33";DNS="192.168.96.33";
 BRIDGE="vmbr406";IP="10.8.33.50/28";
 
@@ -18,7 +18,7 @@ local:vztmpl/alpine-3.18-default_20230607_amd64.tar.xz \
 -ssh-public-keys ~/hci.pub
 pct start ${VMID}
 
-VMID=19237;pct exec ${VMID} -- sh -c "apk add --no-cache bash bash-completion nano nano-syntax curl openssh docker docker-compose lsblk iperf3 nmap htop \
+VMID=19247;pct exec ${VMID} -- sh -c "apk add --no-cache bash bash-completion nano nano-syntax curl openssh docker docker-compose lsblk iperf3 nmap htop \
 && echo 'PermitRootLogin yes' >>/etc/ssh/ssh_config && rc-update add sshd \
 && rc-update add docker && service sshd restart \
 && cat /usr/share/nano/*.nanorc > ~/.nanorc \
@@ -29,12 +29,12 @@ VMID=19237;pct exec ${VMID} -- sh -c "apk add --no-cache bash bash-completion na
 ```
 ssh -i ~/hci.key -o StrictHostKeyChecking=no -o BatchMode=yes root@192.168.96.37
 
-VMID=19237;pct exec ${VMID} -- bash
+VMID=19247;pct exec ${VMID} -- bash
 ```
 
 ### Remove
 ```
-VMID=19237;pct stop ${VMID};pct destroy ${VMID}
+VMID=19247;pct stop ${VMID};pct destroy ${VMID}
 ```
 
 # Storages
